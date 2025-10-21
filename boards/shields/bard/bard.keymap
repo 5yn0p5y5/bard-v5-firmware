@@ -34,7 +34,7 @@
             bindings = <
                 &kp MINUS &kp EQUAL &kp GRAVE &kp LBKT &kp RBKT       &kp SEMI &kp QUOTE &kp COMMA &kp DOT &kp SLASH
                 &kp EXCL &kp AT &kp HASH &kp DLR &kp PERC       &kp CARET &kp AMP &kp STAR &kp LPAREN &kp RPAREN
-                &kp UNDERSCORE &kp PLUS &kp COLON &kp QUOT &none       &none &kp PIPE &kp TILDE &kp LESS &kp GREATER
+                &kp UNDERSCORE &kp PLUS &kp COLON &kp QUOTE &none       &none &kp PIPE &kp TILDE &kp LESS &kp GREATER
                                 &trans &mo 3 &trans &trans &trans &trans
             >;
 
