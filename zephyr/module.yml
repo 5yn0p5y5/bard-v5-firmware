@@ -1,3 +1,4 @@
+name: zmk-keyboard-bard
 build:
   settings:
     board_root: .
