@@ -5,51 +5,62 @@
 #include <dt-bindings/zmk/ext_power.h> 
 #include <dt-bindings/zmk/outputs.h>
 / {
-    keymap {
-        compatible = "zmk,keymap";
+        keymap {
+                compatible = "zmk,keymap";
 
-        base {
-            bindings = <
-                &kp Q   &kp W   &kp E   &kp R   &kp T       &kp Y   &kp U   &kp I   &kp O   &kp P
-                &kp A   &kp S   &kp D   &kp F   &kp G       &kp H   &kp J   &kp K   &kp L   &kp SQT
-                &kp Z   &kp X   &kp C   &kp V   &kp B       &kp N   &kp M   &kp COMMA &kp DOT &kp SLASH
-                                    &kp BACKSPACE &mo 1 &kp SPACE &kp ENTER &mo 2 &kp TAB
-            >;
+                default_layer {
+// -----------------------------------------------------------------------------------------
+// |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  |
+// |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |
+// |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  |
+//                   | LWR |LSHFT|   | SPC | RSE  |
 
-            display-name = "Base";
+                        bindings = <
+   &kp Q &kp W &kp E &kp R &kp T       &kp Y &kp U  &kp I     &kp O   &kp P
+   &kp A &kp S &kp D &kp F &kp G       &kp H &kp J  &kp K     &kp L   &kp SEMI
+   &kp Z &kp X &kp C &kp V &kp B       &kp N &kp M  &kp COMMA &kp DOT &kp FSLH
+                     &mo 1 &kp LSHFT   &kp SPACE    &mo 2
+                        >;
+                };
+                lower_layer { //mo 1
+// -----------------------------------------------------------------------------------------
+// |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  |
+// | TAB |     |     |     |     |   | LFT | DWN |  UP | RGT |BSPC |
+// | ESC |     |     |     |     |   |     |     |     |     |     |
+//                   |     |CTRL |   | ENT |     |
+
+                        bindings = <
+   &kp N1       &kp N2       &kp N3       &kp N4       &kp N5         &kp N6   &kp N7   &kp N8 &kp N9    &kp N0
+   &kp TAB      &trans       &trans       &trans       &trans         &kp LEFT &kp DOWN &kp UP &kp RIGHT &kp BSPC
+   &kp ESC      &trans       &trans       &trans       &trans         &trans   &trans   &trans &trans    &trans
+                                          &trans       &kp LCTRL      &kp RET  &trans
+                        >;
+                };
+
+                raise_layer { //mo 2
+// -----------------------------------------------------------------------------------------
+// |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  | UP  | VUP |BSPC |
+// |BATTE|     |     |     |     |   |  -  | LFT | DWN | RGT | ENT |
+// |ZMKSS|     |     |     |     |   |  _  |  +  |  {  | VDW |SPARE|
+//                   |     | SPC |   | PP  |     |
+
+                        bindings = <
+   &kp EXCL          &kp AT &kp HASH &kp DLLR &kp PRCNT   &kp CARET &kp AMPS  &kp UP    &trans        &kp BSPC
+   &ext_power EP_OFF &trans &trans   &trans   &trans      &kp MINUS &kp LEFT  &kp DOWN  &kp RIGHT     &kp ENTER
+   &studio_unlock    &trans &trans   &trans   &trans      &kp UNDER &kp PLUS  &kp LBRC  &trans        &trans
+                                    &trans   &kp SPACE   &kp C_PP  &trans
+                        >;
+                };
         };
-
-        nav {
-            bindings = <
-                &kp N1 &kp N2 &kp N3 &kp N4 &kp N5       &kp N6 &kp N7 &kp N8 &kp N9 &kp N0
-                &kp ESC &kp LALT &kp LSHIFT &kp LCTRL &kp ENTER &kp PRINTSCREEN &kp LEFT &kp DOWN &kp UP &kp RIGHT
-                &none &kp HOME &kp INS &kp END &kp DELETE &kp CAPS &none &kp PGDN &kp PGUP &none
-                                &trans &trans &trans &trans &mo 3 &trans
-            >;
-
-            display-name = "Navigation";
-        };
-
-        sym {
-            bindings = <
-                &kp MINUS &kp EQUAL &kp GRAVE &kp LBKT &kp RBKT       &kp SEMI &kp QUOTE &kp COMMA &kp DOT &kp SLASH
-                &kp EXCL &kp AT &kp HASH &kp DLR &kp PERC       &kp CARET &kp AMP &kp STAR &kp LPAREN &kp RPAREN
-                &kp UNDERSCORE &kp PLUS &kp COLON &kp QUOTE &none       &none &kp PIPE &kp TILDE &kp LESS &kp GREATER
-                                &trans &mo 3 &trans &trans &trans &trans
-            >;
-
-            display-name = "Symbols";
-        };
-
-        adj {
-            bindings = <
-                &kp F1 &kp F2 &kp F3 &kp F4 &kp F5       &kp F6 &kp F7 &kp F8 &kp F9 &kp F10
-                &kp F11 &kp F12 &kp F13 &kp F14 &kp F15       &kp F16 &kp F17 &kp F18 &kp F19 &kp F20
-                &none &none &none &none &none       &none &none &none &none &none
-                                &trans &trans &trans &trans &trans &trans
-            >;
-
-            display-name = "Adjust";
-        };
-    };
 };
+
+
+// functionality to add: 
+
+// symbols ' " [] {} () * - _ = + | \
+
+// Windows key
+
+// Sleep key
+
+// Bluetooth keys
